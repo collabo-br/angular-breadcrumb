@@ -480,6 +480,9 @@ angular
                 ncyBreadcrumb: {
                     label: 'State D.E'
                 }
+            })
+            .state('D.E.F', {
+                url: '/f',
             });
 
         $breadcrumbProvider.setOptions({

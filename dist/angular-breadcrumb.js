@@ -1,4 +1,4 @@
-/*! angular-breadcrumb - v0.4.1-dev-2016-09-15
+/*! angular-breadcrumb - v0.4.1-dev-2016-09-16
 * http://ncuillery.github.io/angular-breadcrumb
 * Copyright (c) 2016 Nicolas Cuillery; Licensed MIT */
 
@@ -210,7 +210,7 @@ function $Breadcrumb() {
 
                 // From current state get dynamic steps
                 var stateRef = $state.$current.self;
-                var dynamicStatesChainFn = stateRef.ncyBreadcrumb.dynamicStatesChain;
+                var dynamicStatesChainFn = stateRef.ncyBreadcrumb ? stateRef.ncyBreadcrumb.dynamicStatesChain : null;
 
                 if (!angular.isFunction(dynamicStatesChainFn)) {
                     return this.getStatesChain();

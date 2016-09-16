@@ -91,4 +91,24 @@ describe('Service with dynamic chain conf', function () {
         expect(lastStep.name).toBe('D.E');
     }));
 
+    it('generate steps for the "D.E" state without dynamic chain', inject(function ($breadcrumb) {
+        goToState('D.E');
+
+        var statesChain = $breadcrumb.getDynamicStatesChain();
+        expect(stringifyStateChain(statesChain)).toBe('A --> D --> D.E');
+
+        var lastStep = $breadcrumb.getLastStep();
+        expect(lastStep.name).toBe('D.E');
+    }));
+
+    it('generate steps for the "D.E.F" state without dynamic chain', inject(function ($breadcrumb) {
+        goToState('D.E.F');
+
+        var statesChain = $breadcrumb.getDynamicStatesChain();
+        expect(stringifyStateChain(statesChain)).toBe('A --> D --> D.E --> D.E.F');
+
+        var lastStep = $breadcrumb.getLastStep();
+        expect(lastStep.name).toBe('D.E.F');
+    }));
+
 });
