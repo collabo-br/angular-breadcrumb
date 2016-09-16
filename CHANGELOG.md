@@ -1,3 +1,18 @@
+<a name="0.4.2"></a>
+### 0.4.2 (2016-09-16)
+
+
+#### Bug Fixes
+
+* add ncyBreadcrumbState for ui-sref attribute ([56cec38b](http://github.com/ncuillery/angular-breadcrumb/commit/56cec38b1169ba91a766bb64f44ddff81d8af2a8))
+* Register listeners once to prevent scope being retained ([181f4c09](http://github.com/ncuillery/angular-breadcrumb/commit/181f4c0901007cbd72c7a9470cb9503eb6ab4d5a))
+
+
+#### Features
+
+* **ncyBreadcrumbLast:** add custom templating ([974f99b5](http://github.com/ncuillery/angular-breadcrumb/commit/974f99b584c85e45b1c0eb1acb4081bf103de06f))
+
+
 <a name="0.4.1"></a>
 ### 0.4.1 (2015-08-09)
 
