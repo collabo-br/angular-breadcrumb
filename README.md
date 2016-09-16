@@ -1,29 +1,35 @@
 # [![angular-breadcrumb](https://raw.github.com/ncuillery/angular-breadcrumb/master/sample/img/logo/angular-breadcrumb-logo-400.png)](http://ncuillery.github.io/angular-breadcrumb/)
-[![Build Status](https://travis-ci.org/ncuillery/angular-breadcrumb.svg)](https://travis-ci.org/ncuillery/angular-breadcrumb) [![Coverage Status](https://coveralls.io/repos/ncuillery/angular-breadcrumb/badge.svg)](https://coveralls.io/r/ncuillery/angular-breadcrumb)
-[![npm version](https://badge.fury.io/js/angular-breadcrumb.svg)](https://badge.fury.io/js/angular-breadcrumb)
 
-Angular-breadcrumb is a module for [AngularJS](http://angularjs.org), which generates a breadcrumb for any page of your application. It is strongly based on the [ui-router](https://github.com/angular-ui/ui-router) framework and its hierarchical tree of states.
 
-## Key features
-- Build a breadcrumb with a step for each state in the current state's hierarchy,
-- Display a human readable label for each step and allows angular binding in it,
-- Work with minimal configuration,
-- Allow custom template (default is a predefined [Bootstrap 3 breadcrumb template](http://getbootstrap.com/components/#breadcrumbs)).
+[Angular-breadcrumb](https://github.com/ncuillery/angular-breadcrumb) with an additional feature, the directive 'ncyBreadcrumbDynamicChain'.
+This directive renders dynamic steps of the breadcrumb.
+The property 'ncyBreadcrumb.dynamicStatesChain' in states configuration is a function that returns an array of objects containing the breadcrumb steps.
+It is useful when states are parent of itself (recursive) in the breadcrumb, or when the steps come from another service.
+For example, in routes with category hierarchy, category({ id : 1 }) > category({ id : 2 }) > product :
 
-## Documentation
-- [Getting started](https://github.com/ncuillery/angular-breadcrumb/wiki/Getting-started)
-- [API Reference](https://github.com/ncuillery/angular-breadcrumb/wiki/API-Reference)
-- [Templating](https://github.com/ncuillery/angular-breadcrumb/wiki/Templating)
+```
+$stateProvider.state('category', {
+  url:'/:id',
+  ncyBreadcrumb: {
+    dynamicStatesChain: function($injector){
+      var myService = $injector.get('myService');
+
+      //The promise resolves with:
+      //[{ label: 'Category A', state: 'category({ id : 1 })'},{ label: 'Category B', state: 'category({ id : 2 })'}],
+      var promise = myService.getSteps();
+      return promise;
+    }
+  }
+}).state('product', {
+  url:'/product',
+  ncyBreadcrumb: {
+    label : 'Product'
+  }
+});
+```
 
 ## Sample
-See angular-breadcrumb in action [here](http://ncuillery.github.io/angular-breadcrumb/#/sample)
-
-## Release History
-See [CHANGELOG.md](https://github.com/ncuillery/angular-breadcrumb/blob/master/CHANGELOG.md)
-
-## Contributing
-See [CONTRIBUTING.md](https://github.com/ncuillery/angular-breadcrumb/blob/master/CONTRIBUTING.md)
-
+See angular-breadcrumb with dynamic chain in action [here](http://embed.plnkr.co/mRaWgIW4QgZjD3HDt8aF/)
 
 ## License
 Copyright (c) 2013 Nicolas Cuillery  
