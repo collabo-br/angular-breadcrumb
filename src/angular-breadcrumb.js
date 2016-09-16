@@ -205,7 +205,7 @@ function $Breadcrumb() {
 
                 // From current state get dynamic steps
                 var stateRef = $state.$current.self;
-                var dynamicStatesChainFn = stateRef.ncyBreadcrumb.dynamicStatesChain;
+                var dynamicStatesChainFn = stateRef.ncyBreadcrumb ? stateRef.ncyBreadcrumb.dynamicStatesChain : null;
 
                 if (!angular.isFunction(dynamicStatesChainFn)) {
                     return this.getStatesChain();

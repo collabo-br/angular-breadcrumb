@@ -8,7 +8,7 @@ Angular-breadcrumb is a module for [AngularJS](http://angularjs.org), which gene
 - Build a breadcrumb with a step for each state in the current state's hierarchy,
 - Display a human readable label for each step and allows angular binding in it,
 - Work with minimal configuration,
-- Allow custom template (default is a predefined [Bootstrap 3 breadcrumb template](http://getbootstrap.com/components/#breadcrumbs)). 
+- Allow custom template (default is a predefined [Bootstrap 3 breadcrumb template](http://getbootstrap.com/components/#breadcrumbs)).
 
 ## Documentation
 - [Getting started](https://github.com/ncuillery/angular-breadcrumb/wiki/Getting-started)
