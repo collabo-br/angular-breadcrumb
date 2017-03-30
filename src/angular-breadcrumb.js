@@ -81,6 +81,11 @@ function $Breadcrumb() {
 
         // Add the state in the chain if not already in and if not abstract
         var $$addStateInChain = function (chain, stateRef) {
+
+            if(typeof(stateRef) !== 'string'){
+              stateRef = $injector.invoke(stateRef);
+            }
+
             var conf,
                 parentParams,
                 ref = parseStateRef(stateRef.state || stateRef),

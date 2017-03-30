@@ -1,6 +1,6 @@
-/*! angular-breadcrumb - v0.4.2
+/*! angular-breadcrumb - v0.5.0
 * http://ncuillery.github.io/angular-breadcrumb
-* Copyright (c) 2016 Nicolas Cuillery; Licensed MIT */
+* Copyright (c) 2017 Nicolas Cuillery; Licensed MIT */
 
 (function (window, angular, undefined) {
 'use strict';
@@ -86,6 +86,11 @@ function $Breadcrumb() {
 
         // Add the state in the chain if not already in and if not abstract
         var $$addStateInChain = function (chain, stateRef) {
+
+            if(typeof(stateRef) !== 'string'){
+              stateRef = $injector.invoke(stateRef);
+            }
+
             var conf,
                 parentParams,
                 ref = parseStateRef(stateRef.state || stateRef),
