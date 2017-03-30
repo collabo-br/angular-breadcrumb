@@ -84,10 +84,16 @@ function $Breadcrumb() {
             return state.ncyBreadcrumb && angular.isFunction(state.ncyBreadcrumb.dynamicStatesChain);
         };
 
+        var $$isAngularCallback = function(ref){
+          if (angular.isArray(ref)) {
+            ref = ref[ref.length - 1];
+          }
+          return typeof(ref) === 'function' || ref.hasOwnProperty('$inject');
+        }
         // Add the state in the chain if not already in and if not abstract
         var $$addStateInChain = function (chain, stateRef) {
 
-            if(typeof(stateRef) !== 'string'){
+            if($$isAngularCallback(stateRef)){
               stateRef = $injector.invoke(stateRef);
             }
 
